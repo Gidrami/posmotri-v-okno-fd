@@ -82,6 +82,7 @@ ol {
   gap: 30px;
   height: 298px;
   margin-top: 20px;
+  padding-bottom: 2px; /* Для outline-offset у кнопки "показать ещё"  */
   overflow-y: auto;
 }
 
@@ -89,7 +90,7 @@ ol {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  padding: 2px 0;
+  padding: 2px 3px;
 }
 
 .result__video-container {
@@ -147,9 +148,9 @@ ol {
 
 .content__card-link {
   display: block;
+  outline: none;
   color: #fff;
   text-decoration: none;
-  outline: none;
 }
 
 .content__card-link_current {
@@ -166,16 +167,16 @@ ol {
   background-color: #545050;
 }
 
-.content__card-link:focus-visible {
+.content__list-item:has(:focus-visible) {
   outline: 1px solid #fff;
+}
+
+.content__list-item * {
+  outline: none;
 }
 
 .content__card-link:focus {
   outline: none;
-}
-
-.content__list-item {
-  padding: 0px 3px;
 }
 
 .content__video-card-title {
@@ -186,11 +187,11 @@ ol {
   text-transform: uppercase;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin-top: -3px;
 }
 
 .content__video-card-description {
   display: -webkit-box;
+  margin-top: -1px;
   overflow: hidden;
   font-family: "Fira Sans Condensed";
   font-weight: 400;
@@ -223,8 +224,8 @@ ol {
 }
 
 .search-form__fieldset {
-  border: 0;
   width: 225px;
+  border: 0;
 }
 
 .search-form__textfield {
@@ -252,13 +253,14 @@ ol {
 
 .search-form__label:has(.search-form__textfield:focus-visible) {
   outline: 1px solid #fff;
+  outline-offset: 1px;
 }
 
 .search-form__pseudo-checkbox {
   width: 19px;
   height: 19px;
+  margin-bottom: -1px;
   border: 1px solid #fff;
-  padding: 1px;
 }
 
 .search-form__pseudo-checkbox::after {
@@ -279,11 +281,18 @@ ol {
   cursor: pointer;
 }
 
+.search-form__label:has(.search-form__checkbox:checked)
+  .search-form__label-text {
+  text-decoration: none;
+}
+
 .search-form__label:has(.search-form__checkbox:focus-visible) {
   outline: 1px solid #fff;
+  outline-offset: 1px;
 }
 
 .button {
+  min-height: 34px;
   border: 1px solid #fff;
   color: #fff;
   font-family: "Fira Sans Condensed";
@@ -291,7 +300,6 @@ ol {
   font-size: 18px;
   background-color: transparent;
   appearance: none;
-  min-height: 34px;
 }
 
 .button:hover {
@@ -306,6 +314,7 @@ ol {
 
 .button:focus-visible {
   outline: 1px solid #fff;
+  outline-offset: 1px;
 }
 
 .search-form__submit-button {
